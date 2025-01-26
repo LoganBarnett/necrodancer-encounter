@@ -1,3 +1,33 @@
-.class {
-  foo: bar;
+body {
+  background-color: black;
+  color: white;
+}
+
+#directions {
+  list-style: none;
+  /*
+   * display: inline-block;
+   */
+}
+
+#directions li {
+  display: inline;
+}
+
+#directions li img {
+  height: 15%;
+  width: 15%;
+  object-fit: scale-down;
+}
+
+img.left {
+  transform: rotate(270deg);
+}
+
+img.down {
+  transform: rotate(180deg);
+}
+
+img.right {
+  transform: rotate(90deg);
 }

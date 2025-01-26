@@ -3,12 +3,19 @@
   <head>
 <title>Necrodancer Encounter</title>
 <script type="text/javascript" src="static/app.js"></script>
+<link href="static/styles.css" rel="stylesheet" />
 </head>
 <body>
 
 <ul id="directions">
 </ul>
-<input id="directions-count" type="text" value="4">
+<input id="directions-count" name="directions-count" type="text" value="4">
 <button onclick="directionsRegenerate()">regenerate</button>
+
+DM position relative to you:
+<label><input type="radio" name="orientation" onchange="reorient(this)" value="north" checked="checked">N</label>
+<label><input type="radio" name="orientation" onchange="reorient(this)" value="east">E</label>
+<label><input type="radio" name="orientation" onchange="reorient(this)" value="south">S</label>
+<label><input type="radio" name="orientation" onchange="reorient(this)" value="west">W</label>
 </body>
 </html>
