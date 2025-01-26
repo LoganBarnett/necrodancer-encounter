@@ -1,0 +1,52 @@
+#+title:     Necrodancer Encounter
+#+author:    Logan Barnett
+#+email:     logustus@gmail.com
+#+date:      <2025-01-25 Sat>
+#+language:  en
+#+file_tags:
+#+tags:
+
+Got a necromancer in your D&D encounter, and you want to mix it up with a dance
+themed battle or puzzle?  We got you.
+
+* The Encounter
+
+When a character's turn comes up, they are presented with a series of arrows,
+read left to right, which indicates the moves they can make.  These arrows are
+random.  It is suggested that the arrows are the number of 5 foot increments in
+the character's walking speed, minus one.  So a character with a 30 foot walking
+speed would get 30 / 5 - 1 = 5 arrows.  This allows the characters to somewhat
+control their movements.
+
+At the end of the move sequence, the character can end with a flourish and take
+an action (attack, cast a spell, etc).
+
+If the character performs their action early or performs a move outside of the
+arrows indicated, they must make a performance check.  The DC is 12.  On a
+failure, that character takes 4d6 psychic damage, with a DC 12 charisma save for
+half of that.  This can potentially trigger multiple times per turn.  The arrow
+ignored is not skipped.  So if the next arrow was to move right before the check
+was made, then the next arrow is to move right.
+
+If a character can't make their full move for some reason (they stood up from
+being prone), they are still required to try to move in the directions given and
+must suffer the test each time.
+
+This is a pretty difficult encounter.  You can reduce the damage and DC to
+adjust for your party.  I concocted this without play testing it for a party of
+4 at 11th level.
+
+* The Technology
+
+How this works is there is a DM version of the UI and a player version of the
+UI.  You could have the players connect via their phones or you can use a tablet
+for all to see (it's probably more fun to use a tablet).  Then as the DM you
+have another screen (probably your phone) that displays the same information.
+The DM's set will be inverted from the player's, so the arrows remain true
+regardless of orientation.  If you have a rectangular table, you can pass click
+the compass to indicate which direction the DM is relative to you.
+
+When a character's turn comes up, they are given a new sequence of randomly
+generated arrows.  You can indicate this new turn and their walking speed via
+the UI, or you can tie it in with an HTTP API call.  You will need to indicate
+the walking speed of the character when you do this.
