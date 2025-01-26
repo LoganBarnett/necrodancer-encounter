@@ -112,7 +112,7 @@ function directionsLoad() {
 }
 
 function directionsRegenerate() {
-  count = document.querySelector('#directions-count').value
+  const count = document.querySelector('#directions-count').value
   post(
     '/directions?direction_count=' + count,
     directionsLoad,
