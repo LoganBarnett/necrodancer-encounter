@@ -187,8 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#player-controls').style = ''
     document.querySelector('#dm-controls').style = 'display: none;'
   }
-  if(kioskMode == 'true') {
+  if(kioskMode != null) {
     document.querySelector('#dm-controls').style = 'display: none;'
     document.querySelector('#player-controls').style = 'display: none;'
+    orientations = orientationFromCardinal(kioskMode)
   }
 })
