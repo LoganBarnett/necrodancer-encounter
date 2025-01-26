@@ -163,7 +163,7 @@ function reorient(target) {
   directionsLoad()
   setInterval(function() {
     console.log('tick')
-    // directionsLoad()
+    directionsLoad()
     colorOffset += 1
     document
       .querySelectorAll('img')
@@ -175,3 +175,20 @@ function reorient(target) {
       })
   }, 1000)
 })()
+
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const dmMode = urlParams.get('dm');
+  const kioskMode = urlParams.get('kiosk');
+  if(dmMode == 'true') {
+    document.querySelector('#dm-controls').style = ''
+    document.querySelector('#player-controls').style = 'display: none;'
+  } else {
+    document.querySelector('#player-controls').style = ''
+    document.querySelector('#dm-controls').style = 'display: none;'
+  }
+  if(kioskMode == 'true') {
+    document.querySelector('#dm-controls').style = 'display: none;'
+    document.querySelector('#player-controls').style = 'display: none;'
+  }
+})

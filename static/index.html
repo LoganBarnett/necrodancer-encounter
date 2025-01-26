@@ -9,13 +9,17 @@
 
 <ul id="directions">
 </ul>
-<input id="directions-count" name="directions-count" type="text" value="4">
-<button onclick="directionsRegenerate()">regenerate</button>
+<div id="dm-controls">
+  <input id="directions-count" name="directions-count" type="text" value="4">
+  <button onclick="directionsRegenerate()">regenerate</button>
+</div>
 
-DM position relative to you:
-<label><input type="radio" name="orientation" onchange="reorient(this)" value="north" checked="checked">N</label>
-<label><input type="radio" name="orientation" onchange="reorient(this)" value="east">E</label>
-<label><input type="radio" name="orientation" onchange="reorient(this)" value="south">S</label>
-<label><input type="radio" name="orientation" onchange="reorient(this)" value="west">W</label>
+<div id="player-controls">
+  DM position relative to you:
+  <label><input type="radio" name="orientation" onchange="reorient(this)" value="north" checked="checked">N</label>
+  <label><input type="radio" name="orientation" onchange="reorient(this)" value="east">E</label>
+  <label><input type="radio" name="orientation" onchange="reorient(this)" value="south">S</label>
+  <label><input type="radio" name="orientation" onchange="reorient(this)" value="west">W</label>
+</div>
 </body>
 </html>
