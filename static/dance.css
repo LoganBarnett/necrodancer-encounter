@@ -1,0 +1,43 @@
+body {
+  background-color: black;
+  padding: 0;
+  margin: 0;
+  --odd-theme-color: var(--odd-tile-color);
+  --even-theme-color: var(--even-tile-color);
+}
+
+.a-theme {
+  --odd-tile-color: green;
+  --even-tile-color: purple;
+}
+
+.b-theme {
+  --odd-tile-color: purple;
+  --even-tile-color: green;
+}
+
+:root {
+}
+
+#floor {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tile {
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.tile:nth-child(odd) {
+  background-color: var(--odd-theme-color);
+}
+
+.tile:nth-child(even) {
+  background-color: var(--even-theme-color);
+}

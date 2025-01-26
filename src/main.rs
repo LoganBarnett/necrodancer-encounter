@@ -22,6 +22,14 @@ async fn index() -> actix_web::Result<NamedFile> {
   )
 }
 
+async fn dance_floor() -> actix_web::Result<NamedFile> {
+  Ok(
+    NamedFile::open("./static/dance-floor.html")
+      .map_err(AppError::FileOpenError)
+      ?
+  )
+}
+
 pub struct AppState {
   pub direction_state: Mutex<DirectionState>
 }
@@ -51,6 +59,7 @@ async fn main() -> std::io::Result<()> {
       // https://localhost:8080/static/styles.css.  This way we get proper 404s
       // and a default index.html.
       .route("/", web::get().to(index))
+      .route("/dance-floor", web::get().to(dance_floor))
       .service(
         web::resource("/directions")
           .get(directions::index)
