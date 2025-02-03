@@ -11,6 +11,8 @@ themed battle or puzzle?  We got you.
 
 * The Encounter
 
+** First Draft
+
 When a character's turn comes up, they are presented with a series of arrows,
 read left to right, which indicates the moves they can make.  These arrows are
 random.  It is suggested that the arrows are the number of 5 foot increments in
@@ -36,6 +38,17 @@ This is a pretty difficult encounter.  You can reduce the damage and DC to
 adjust for your party.  I concocted this without play testing it for a party of
 4 at 11th level.
 
+** Retrospection
+
+This is a little punishing to melee characters.  Especially if they have trouble
+making the Performance check (and subsequent Charisma save).  Though a clever
+melee character could use their extra move to butt up against the lich and then
+the lich has to make the test or get opportunity attacked.  This is particularly
+effective with the Sentinel feat.
+
+Orientation proved a little confusing for one player that was at a skewed
+distance, but 3/4 handled it well.
+
 * The Technology
 
 How this works is there is a DM version of the UI and a player version of the
@@ -50,3 +63,68 @@ When a character's turn comes up, they are given a new sequence of randomly
 generated arrows.  You can indicate this new turn and their walking speed via
 the UI, or you can tie it in with an HTTP API call.  You will need to indicate
 the walking speed of the character when you do this.
+
+
+** Service
+
+There's a simple Rust service (using ~actix-web~).  It stores the state of the
+currently generated arrow sequence.  When it receives an HTTP API call, it
+generates a new arrow sequence.
+
+** UI
+
+The UI shows arrows from the service.  The arrows rotate in color.  The UI polls
+every second for arrow sequence updates.
+
+The UI has three basic modes:  Player, DM, and Kiosk.
+
+*** DM Mode
+
+In the DM mode, the arrows are rendered in the "preferred" orientation.  It
+includes some UI to submit a new set of arrows.  This can be helpful if you need
+to adjust (such as when someone gets Haste cast on them).  Or if you don't have
+a programmatically controlled initiative system.
+
+I believe there is presently a bug where it only ever submits 4 arrows from the
+UI.  The service seems to be fine, so it's probably a mismatch in the UI's form
+variables.
+
+It's assumed the DM will be seeing this from their seating position at the
+table.
+
+Use the ~?mode=dm~ query parameter to set it to DM mode.
+
+*** Player Mode
+
+The player mode has no form to submit new arrow sequences.  A player has the
+ability to select the DM's position relative to themselves.  Selecting this
+changes it such that the player's visible arrows are rotated so the directions
+are consistent for the player so long as they are reading from left to right.
+
+I picked cardinal directions because I wanted them to be easy to tell apart from
+the actual arrow directions.  Even if that's used internally, I should just use
+forward/left/back/right.
+
+The player mode is default.  No query parameters are needed to activate it.
+
+*** Kiosk Mode
+
+Kiosk mode has no interactable UI at all.  It's for loading up on a tablet or
+monitor that the entire table can see.  Use ~?kiosk=<direction>~ to activate
+Kiosk mode.  The direction works like it does for [[Player Mode]], but use a single
+letter cardinal direction.  You could put it in ~s~ (for south) and place the
+tablet in front of the DM seat.
+
+* Dance Floor
+
+If you have one of those fancy multi-thousand dollar tables with a massive TV
+embedded in it, or a $120 projector and blinds, you can head to
+~/dance-floor.html~ and have a sweet dance floor to run your encounter on.  It
+uses a grid of fuchsia and lime.  If it winds up being too small, you may need
+to tweak the grid number.  The size could also be tweaked, but be aware if
+you're on a projector that no amount of tweaking will get it to perfectly fit
+your grid mat.  Though projectors oftentimes have a parallelogram/rhombus
+adjustment setting that could help fix that for you.
+
+It adds to the ambiance, but it does make actually doing your moves a little
+harder as the floor shifts around while you're trying to count squares.

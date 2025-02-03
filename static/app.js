@@ -1,6 +1,6 @@
 'use strict'
 // I just learned I have Firefox installed on the tablet, so I don't need to
-// keep taking these 2010 era measures...
+// keep taking these 2010 era measures for the Silk browser...
 console.log('In app.js...')
 // Copied from ChatGPT.  Suspect it.
 function get(url, successFn, failureFn) {

@@ -8,8 +8,8 @@ const danceFloorTick = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const floor = document.querySelector('#floor')
-  const width = 20
-  const height = 20
+  const width = 40
+  const height = 40
   Array(width * height)
     .fill()
     .map(n => {
